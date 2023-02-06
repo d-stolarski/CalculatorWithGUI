@@ -35,6 +35,28 @@ public class Calculator extends javax.swing.JFrame {
         return actionListener;
     }
     
+    //Calc two numbers and return the result
+    public float calc(String operation, float number1, float number2) {
+        float result = 0;
+        switch(operation) {
+            case "+":
+                    result = number1 + number2;
+                    break;
+            case "-":
+                    result = number1 - number2;
+                    break;       
+            case "*":
+                    result = number1 * number2;
+                    break;  
+            case "/":
+                    result = number1 / number2;
+                    break; 
+            default:
+                    break;
+        }
+        return result;
+    }
+    
     // add action to all buttons
     public void addAction() {
         Component[] components = jPanel1.getComponents();
@@ -65,9 +87,9 @@ public class Calculator extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jButtonTwo = new javax.swing.JButton();
+        jButtonOne = new javax.swing.JButton();
+        jButtonThree = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
@@ -109,14 +131,14 @@ public class Calculator extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton6.setText("4");
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton7.setText("2");
+        jButtonTwo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jButtonTwo.setText("2");
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton8.setText("1");
+        jButtonOne.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jButtonOne.setText("1");
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton9.setText("3");
+        jButtonThree.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jButtonThree.setText("3");
 
         jButton10.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton10.setText("-");
@@ -172,11 +194,11 @@ public class Calculator extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButtonOne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButtonTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButtonThree, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,9 +229,9 @@ public class Calculator extends javax.swing.JFrame {
                     .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonOne, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonThree, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -298,9 +320,9 @@ public class Calculator extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton jButtonOne;
+    private javax.swing.JButton jButtonThree;
+    private javax.swing.JButton jButtonTwo;
     private javax.swing.JTextField jCalcDisplay;
     private javax.swing.JToggleButton jExitButton;
     private javax.swing.JPanel jPanel1;

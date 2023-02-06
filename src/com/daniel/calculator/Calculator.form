@@ -78,11 +78,11 @@
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton8" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Component id="jButtonOne" min="-2" pref="70" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton7" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Component id="jButtonTwo" min="-2" pref="70" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton9" min="-2" pref="70" max="-2" attributes="0"/>
+                                          <Component id="jButtonThree" min="-2" pref="70" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jButton17" min="-2" pref="70" max="-2" attributes="0"/>
@@ -124,9 +124,9 @@
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton8" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="jButton7" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="jButtonOne" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="jButtonTwo" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="jButtonThree" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
                       <Component id="jButton10" alignment="3" min="-2" pref="70" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
@@ -215,7 +215,7 @@
             <Property name="text" type="java.lang.String" value="4"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="jButtonTwo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="36" style="0"/>
@@ -223,7 +223,7 @@
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="jButtonOne">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="36" style="0"/>
@@ -231,7 +231,7 @@
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton9">
+        <Component class="javax.swing.JButton" name="jButtonThree">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="36" style="0"/>
