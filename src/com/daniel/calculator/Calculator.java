@@ -28,7 +28,16 @@ public class Calculator extends javax.swing.JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+               //if the button is not an operator but number
+               if(!isOperator(button)) {
+                   if(jCalcDisplay.getText().equals("0")) {
+                       jCalcDisplay.setText(button.getText());
+                   } else {
+                       jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+                   }
+               } else { //if the button is not an operator [+ - * / = C .]
+                   System.out.println("OPR" + button.getText());
+               }
              
             }
         };
@@ -52,9 +61,27 @@ public class Calculator extends javax.swing.JFrame {
                     result = number1 / number2;
                     break; 
             default:
-                    break;
+                    break;  
         }
         return result;
+    }
+    
+    
+    
+    //check if button is an operator
+    public boolean isOperator(JButton button) {
+        String buttonText = button.getText();
+        if(buttonText.equals("+") ||
+           buttonText.equals("-") ||
+           buttonText.equals("*") ||
+           buttonText.equals("/") ||
+           buttonText.equals(".") ||
+           buttonText.equals("C") ||
+           buttonText.equals("=")) {
+           return true;
+        } else { 
+            return false; 
+        }
     }
     
     // add action to all buttons
@@ -105,6 +132,11 @@ public class Calculator extends javax.swing.JFrame {
 
         jCalcDisplay.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jCalcDisplay.setText("0");
+        jCalcDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCalcDisplayActionPerformed(evt);
+            }
+        });
 
         jExitButton.setText("Exit");
         jExitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -269,6 +301,10 @@ public class Calculator extends javax.swing.JFrame {
     private void jExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jExitButtonActionPerformed
+
+    private void jCalcDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCalcDisplayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCalcDisplayActionPerformed
 
     /**
      * @param args the command line arguments
