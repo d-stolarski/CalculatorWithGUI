@@ -28,17 +28,20 @@ public class Calculator extends javax.swing.JFrame {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //if the button is not an operator but number
+               //if the button is not an operator but 
                if(!isOperator(button)) {
-                   if(jCalcDisplay.getText().equals("0")) {
-                       jCalcDisplay.setText(button.getText());
-                   } else {
+                   if(!jCalcDisplay.getText().contains(".")) {
+                       if(jCalcDisplay.getText().equals("0") && !button.getText().equals(".")) {
+                           jCalcDisplay.setText(button.getText());
+                       } else {
+                           jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+                       }
+                   } else if (!button.getText().equals(".")){
                        jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
                    }
                } else { //if the button is not an operator [+ - * / = C .]
                    System.out.println("OPR" + button.getText());
                }
-             
             }
         };
         return actionListener;
@@ -75,7 +78,6 @@ public class Calculator extends javax.swing.JFrame {
            buttonText.equals("-") ||
            buttonText.equals("*") ||
            buttonText.equals("/") ||
-           buttonText.equals(".") ||
            buttonText.equals("C") ||
            buttonText.equals("=")) {
            return true;
@@ -127,8 +129,10 @@ public class Calculator extends javax.swing.JFrame {
         jButton17 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Java Calculator");
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hiper Java Calculator", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jCalcDisplay.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jCalcDisplay.setText("0");
@@ -243,7 +247,7 @@ public class Calculator extends javax.swing.JFrame {
                                     .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 15, Short.MAX_VALUE)))
+                        .addGap(0, 21, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -279,16 +283,14 @@ public class Calculator extends javax.swing.JFrame {
                     .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
