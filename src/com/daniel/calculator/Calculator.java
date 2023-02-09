@@ -18,110 +18,121 @@ public class Calculator extends javax.swing.JFrame {
     /**
      * Creates new form Calculator
      */
-    float num1 = 0, num2 = 0, oprClickCount = 0;       
+    float num1 = 0, num2 = 0, oprClickCount = 0;
     String opr = "";
     boolean isOprClick = false;
     boolean isEqualClick = false;
-    
+
     public Calculator() {
         initComponents();
         addAction();
     }
-    
+
     // create action when the user click
     public ActionListener createAction(JButton button) {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //if the button is not an operator but 
-               if(!isOperator(button)) {
-                   if(isOprClick) {
-                       num1 = Float.valueOf(jCalcDisplay.getText());
-                       jCalcDisplay.setText("");
-                   }
-                   if(!jCalcDisplay.getText().contains(".")) {
-                       if(jCalcDisplay.getText().equals("0") && !button.getText().equals(".")) {
-                           jCalcDisplay.setText(button.getText());
-                           isOprClick = false;
-                       } else {
-                           jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
-                           isOprClick = false;
-                       }
-                   } else if (!button.getText().equals(".")){
-                       jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
-                       isOprClick = false;
-                   }
-               } else { //if the button is not an operator [+ - * / = C .]
-                   if(oprClickCount == 0) { //if an operation is clicked for the first time
-                       oprClickCount++;
-                       num1 = Float.valueOf(jCalcDisplay.getText());
-                       isOprClick = true;
-                   } else {
-                       if(!button.getText().equals("=")) {
-                           num2 = Float.valueOf(jCalcDisplay.getText());
-                           jCalcDisplay.setText(Float.toString(calc(opr,num1,num2)));
-                           opr = button.getText();
-                           num2 = Float.valueOf(jCalcDisplay.getText());
-                           isOprClick = true;
-                           isEqualClick = false;
-                       }
-                   }
-                   
-               }
+                //if the button is not an operator but 
+                if (!isOperator(button)) {
+                    if (isOprClick) {
+                        num1 = Float.parseFloat(jCalcDisplay.getText());
+                        jCalcDisplay.setText("");
+                    }
+                    if (!jCalcDisplay.getText().contains(".")) {
+                        if (jCalcDisplay.getText().equals("0") && !button.getText().equals(".")) {
+                            jCalcDisplay.setText(button.getText());
+                            isOprClick = false;
+                        } else {
+                            jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+                            isOprClick = false;
+                        }
+                    } else if (!button.getText().equals(".")) {
+                        jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+                        isOprClick = false;
+                    } 
+                } else { //if the button is not an operator [+ - * / = C .]
+                    if (oprClickCount == 0) { //if an operation is clicked for the first time
+                        oprClickCount++;
+                        num1 = Float.parseFloat(jCalcDisplay.getText());
+                        opr = button.getText();
+                        isOprClick = true;
+                    } else {
+                        if (!button.getText().equals("=")) {
+                            if (!isEqualClick) {
+                                num2 = Float.valueOf(jCalcDisplay.getText());
+                                jCalcDisplay.setText(Float.toString(calc(opr, num1, num2)));
+                                opr = button.getText();
+                                num2 = Float.valueOf(jCalcDisplay.getText());
+                                isOprClick = true;
+                                isEqualClick = false;
+                            } else {
+                                isEqualClick = false;
+                                opr = button.getText();
+                            }
+                        } else {
+                            num2 = Float.valueOf(jCalcDisplay.getText());
+                            jCalcDisplay.setText(Float.toString(calc(opr, num1, num2)));
+                            num1 = Float.valueOf(jCalcDisplay.getText());
+                            isOprClick = true;
+                            isEqualClick = true;
+                        }
+                    }
+                }
+                
             }
         };
         return actionListener;
     }
-    
+
     //Calc two numbers and return the result
     public float calc(String operation, float number1, float number2) {
         float result = 0;
-        switch(operation) {
+        switch (operation) {
             case "+":
-                    result = number1 + number2;
-                    break;
+                result = number1 + number2;
+                break;
             case "-":
-                    result = number1 - number2;
-                    break;       
+                result = number1 - number2;
+                break;
             case "*":
-                    result = number1 * number2;
-                    break;  
+                result = number1 * number2;
+                break;
             case "/":
-                    result = number1 / number2;
-                    break; 
+                if(number2 != 0) {
+                result = number1 / number2;
+                }
+                break;
             default:
-                    break;  
+                break;
         }
         return result;
     }
-    
-    
-    
+
     //check if button is an operator
     public boolean isOperator(JButton button) {
         String buttonText = button.getText();
-        if(buttonText.equals("+") ||
-           buttonText.equals("-") ||
-           buttonText.equals("*") ||
-           buttonText.equals("/") ||
-           buttonText.equals("C") ||
-           buttonText.equals("=")) {
-           return true;
-        } else { 
-            return false; 
+        if (buttonText.equals("+")
+                || buttonText.equals("-")
+                || buttonText.equals("*")
+                || buttonText.equals("/")
+                || buttonText.equals("C")
+                || buttonText.equals("=")) {
+            return true;
+        } else {
+            return false;
         }
     }
-    
+
     // add action to all buttons
     public void addAction() {
         Component[] components = jPanel1.getComponents();
-        for(Component component : components) {
-            if(component instanceof JButton) {
+        for (Component component : components) {
+            if (component instanceof JButton) {
                 JButton button = (JButton) component; //select only button components
                 button.addActionListener(createAction(button));
             }
         }
-        
     }
 
     /**
