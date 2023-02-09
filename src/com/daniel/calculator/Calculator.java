@@ -18,6 +18,11 @@ public class Calculator extends javax.swing.JFrame {
     /**
      * Creates new form Calculator
      */
+    float num1 = 0, num2 = 0, oprClickCount = 0;       
+    String opr = "";
+    boolean isOprClick = false;
+    boolean isEqualClick = false;
+    
     public Calculator() {
         initComponents();
         addAction();
@@ -30,17 +35,38 @@ public class Calculator extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                //if the button is not an operator but 
                if(!isOperator(button)) {
+                   if(isOprClick) {
+                       num1 = Float.valueOf(jCalcDisplay.getText());
+                       jCalcDisplay.setText("");
+                   }
                    if(!jCalcDisplay.getText().contains(".")) {
                        if(jCalcDisplay.getText().equals("0") && !button.getText().equals(".")) {
                            jCalcDisplay.setText(button.getText());
+                           isOprClick = false;
                        } else {
                            jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+                           isOprClick = false;
                        }
                    } else if (!button.getText().equals(".")){
                        jCalcDisplay.setText(jCalcDisplay.getText() + button.getText());
+                       isOprClick = false;
                    }
                } else { //if the button is not an operator [+ - * / = C .]
-                   System.out.println("OPR" + button.getText());
+                   if(oprClickCount == 0) { //if an operation is clicked for the first time
+                       oprClickCount++;
+                       num1 = Float.valueOf(jCalcDisplay.getText());
+                       isOprClick = true;
+                   } else {
+                       if(!button.getText().equals("=")) {
+                           num2 = Float.valueOf(jCalcDisplay.getText());
+                           jCalcDisplay.setText(Float.toString(calc(opr,num1,num2)));
+                           opr = button.getText();
+                           num2 = Float.valueOf(jCalcDisplay.getText());
+                           isOprClick = true;
+                           isEqualClick = false;
+                       }
+                   }
+                   
                }
             }
         };
